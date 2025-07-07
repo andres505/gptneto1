@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 from openai import OpenAI
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-client = OpenAI(api_key="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")
+
 df = pd.read_csv("ventas_inventario_diario.csv", parse_dates=["fecha"])
 
 st.set_page_config(page_title="NetoGPT – Co-Piloto Regional", layout="centered")
