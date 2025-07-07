@@ -2,12 +2,18 @@ import streamlit as st
 import pandas as pd
 from openai import OpenAI
 import os
+import requests
 
+# URL de tu webhook de n8n
+webhook_url = "https://andres505.app.n8n.cloud/webhook-test/netogpt/accion"
+
+# Cliente OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
+# Cargar datos
 df = pd.read_csv("ventas_inventario_diario.csv", parse_dates=["fecha"])
 
+# UI
 st.set_page_config(page_title="NetoGPT – Co-Piloto Regional", layout="centered")
 st.title("🧠 NetoGPT – Co-Piloto Operativo para Tiendas Hard Discount")
 st.markdown("Haz una pregunta como gerente regional y obtén una respuesta con base en los datos reales de las tiendas.")
@@ -46,5 +52,14 @@ Responde de manera profesional y concreta. Si hay riesgos, alertas o buenas prá
             )
 
             answer = response.choices[0].message.content.strip()
+
+            # Trigger webhook a n8n (independientemente del contenido)
+            try:
+                r = requests.post(webhook_url, json={"pregunta": user_input, "respuesta": answer})
+                if r.status_code != 200:
+                    st.warning(f"Webhook no respondió correctamente: {r.status_code}")
+            except Exception as e:
+                st.warning(f"Error al enviar al webhook: {e}")
+
             st.success("Respuesta de NetoGPT:")
             st.write(answer)
