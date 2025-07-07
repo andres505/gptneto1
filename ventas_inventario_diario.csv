@@ -1,0 +1,11 @@
+fecha,id_tienda,producto_nombre,ventas_unidades,stock_actual,quiebre_stock,pedido_sugerido
+2025-07-01,Tienda_1,Arroz 1kg,12,20,0,0
+2025-07-02,Tienda_1,Arroz 1kg,15,18,0,0
+2025-07-03,Tienda_1,Arroz 1kg,10,16,0,0
+2025-07-04,Tienda_1,Arroz 1kg,13,14,0,0
+2025-07-05,Tienda_1,Arroz 1kg,9,13,0,0
+2025-07-06,Tienda_1,Arroz 1kg,14,12,0,0
+2025-07-07,Tienda_1,Arroz 1kg,11,10,1,6
+2025-07-08,Tienda_1,Arroz 1kg,13,8,1,7
+2025-07-09,Tienda_1,Arroz 1kg,10,6,1,8
+2025-07-10,Tienda_1,Arroz 1kg,12,5,1,10
