@@ -5,7 +5,7 @@ import os
 import requests
 
 # URL de tu webhook de n8n
-webhook_url = "https://andres505.app.n8n.cloud/webhook-test/netogpt/accion"
+webhook_url = "https://andres505.app.n8n.cloud/webhook/netogpt/accion"
 
 # Cliente OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
